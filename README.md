@@ -1,28 +1,42 @@
-# springboot-kafka-microservices
+# Spring Boot Kafka Microservices
 
 ## Overview
-Event-driven microservices system using Spring Boot and Apache Kafka.
+This project demonstrates a simple event-driven microservices architecture using Spring Boot and Apache Kafka.
 
-This project simulates a payment processing system with:
-- Order Service
-- Payment Service
-- Kafka Event Streaming
-- Retry + Dead Letter Queue (DLQ)
+It simulates an order and payment workflow:
+1. Order Service receives an API request
+2. Order Service publishes an event to Kafka
+3. Payment Service consumes the event and processes payment
+
+## Services
+### Order Service
+- Exposes REST endpoint: `/send?order=<value>`
+- Publishes order events to Kafka topic
+
+### Payment Service
+- Listens to Kafka topic `order-topic`
+- Consumes and processes incoming order messages
 
 ## Tech Stack
 - Java 17
 - Spring Boot
 - Apache Kafka
-- Docker (optional)
+- Maven
 
-## Architecture
-Order Service → Kafka → Payment Service
+## Project Structure
+- `order-service` → producer microservice
+- `payment-service` → consumer microservice
 
-## Features
-- Event-driven communication
-- Idempotent processing
-- Retry + DLQ handling
-- Scalable microservices design
+## Key Concepts Demonstrated
+- Microservices
+- Event-driven architecture
+- Kafka producer/consumer
+- REST API integration
+- Service separation
 
-## Why this project
-Built to demonstrate real-world distributed system design similar to high-scale payment systems.
+## Future Enhancements
+- Retry mechanism
+- Dead Letter Queue (DLQ)
+- Docker Compose
+- AWS deployment
+- Unit and integration tests
