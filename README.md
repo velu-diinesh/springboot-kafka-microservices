@@ -33,6 +33,7 @@ It simulates an order and payment workflow:
 - Kafka producer/consumer
 - REST API integration
 - Service separation
+- Structured logging using SLF4J
 
 ## Future Enhancements
 - Retry mechanism
